@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTesting", "ApiTesting\Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTesting.UnitTests", "ApiTesting.UnitTests\ApiTesting.UnitTests.csproj", "{1D30AABA-EEDB-4D3B-B99D-48391B583D1E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PL", "PL", "{4A3EB445-BDBE-445F-AB34-3628E0641880}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{7E249D5E-9C80-449B-8E6F-CD7EB04A328B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B91ECB7F-B9F0-46B4-99A5-1AC58E6D435D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{74707DFC-B694-4257-B71D-F91259EE7F38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +32,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4A4AE9FD-A31F-44A6-B069-C8D0DE4697FC} = {4A3EB445-BDBE-445F-AB34-3628E0641880}
+		{1D30AABA-EEDB-4D3B-B99D-48391B583D1E} = {4A3EB445-BDBE-445F-AB34-3628E0641880}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3FB4536B-C530-408C-A7E1-0B5ED963BA18}
