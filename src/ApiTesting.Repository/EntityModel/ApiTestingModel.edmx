@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Customer_ID" />
           </Key>
-          <Property Name="Customer_ID" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Customer_Name" Type="nvarchar" MaxLength="30" />
           <Property Name="Contact_Email" Type="nvarchar" MaxLength="25" />
           <Property Name="Mobile_No" Type="nvarchar" MaxLength="10" />
@@ -20,7 +20,7 @@
           </Key>
           <Property Name="Transaction_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Transaction_Date" Type="datetime" />
-          <Property Name="Customer_ID" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Customer_ID" Type="int" Nullable="false" />
           <Property Name="Amount" Type="decimal" Precision="8" Scale="2" />
           <Property Name="Currency_Code" Type="varchar" MaxLength="3" />
           <Property Name="Status" Type="tinyint" />
@@ -54,7 +54,7 @@
           <Key>
             <PropertyRef Name="Customer_ID" />
           </Key>
-          <Property Name="Customer_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Customer_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Contact_Email" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="Mobile_No" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -66,7 +66,7 @@
           </Key>
           <Property Name="Transaction_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Transaction_Date" Type="DateTime" Precision="3" />
-          <Property Name="Customer_ID" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Customer_ID" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Decimal" Precision="8" Scale="2" />
           <Property Name="Currency_Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="Byte" />
