@@ -11,18 +11,27 @@ namespace ApiTesting.Repository.Repository
     {
         public CustomerModel GetData(int customerId, string customerEmail)
         {
+            var result = new CustomerModel();
+
             var customer = new Customer();
             var transactions = new List<Transaction>();
             using (var context = new ApiTestingEntities())
             {
-                customer = context.Customers.Where(x => x.Customer_ID == customerId && x.Contact_Email == customerEmail).FirstOrDefault();
-                transactions = customer.Transactions.ToList();
-            }
-            var result = ConvertEntityCustomerToBusinessObject(customer, new CustomerModel());
-            result.Transaction = new List<TransactionModel>();
-            foreach(var tran in transactions)
-            {
-                result.Transaction.Add(ConvertEntityTransactionToBusinessObject(tran, new TransactionModel()));
+                customer = context.Customers.Where(x => x.Customer_ID == customerId || x.Contact_Email == customerEmail).FirstOrDefault();
+                if (customer != null)
+                {
+                    transactions = customer.Transactions.ToList();
+                    result = ConvertEntityCustomerToBusinessObject(customer, new CustomerModel());
+                    result.Transaction = new List<TransactionModel>();
+                    foreach (var tran in transactions)
+                    {
+                        result.Transaction.Add(ConvertEntityTransactionToBusinessObject(tran, new TransactionModel()));
+                    }
+                }
+                else
+                {
+                    result = null;
+                }
             }
             return result;
         }
