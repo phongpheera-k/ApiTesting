@@ -22,7 +22,7 @@ namespace ApiTesting.UnitTests.Controllers
         [TestCase("2", "phongpheera.k@gmail.com")]
         public void Post_RequestIsValid_ResponseOK(string customerID, string email)
         {
-            CustomerInquiryController controller = new CustomerInquiryController(FakeCustomerInquityServiceForPost(5));
+            CustomerInquiryController controller = new CustomerInquiryController(FakeCustomerInquityServiceWithDataForPost(5));
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
 
@@ -45,7 +45,7 @@ namespace ApiTesting.UnitTests.Controllers
         [TestCase("test", null)]
         public void Post_RequestIsInvalid_ResponseBadRequest(string customerID, string email)
         {
-            CustomerInquiryController controller = new CustomerInquiryController(FakeCustomerInquityServiceForPost(5));
+            CustomerInquiryController controller = new CustomerInquiryController(FakeCustomerInquityServiceWithoutDataForPost());
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
 
@@ -60,7 +60,37 @@ namespace ApiTesting.UnitTests.Controllers
             Assert.That(result.StatusCode == HttpStatusCode.BadRequest); ;
         }
 
-        private ICustomerInquiryService FakeCustomerInquityServiceForPost(int transactionRow)
+        [TestCase("2", "phongpheera.k@gmail.com")]
+        public void Post_DataNotMatch_ResponseNotFound(string customerID, string email)
+        {
+            CustomerInquiryController controller = new CustomerInquiryController(FakeCustomerInquityServiceWithoutDataForPost());
+            controller.Request = new HttpRequestMessage();
+            controller.Configuration = new HttpConfiguration();
+
+            var request = new CustomerInquiryRequest()
+            {
+                customerID = customerID,
+                email = email
+            };
+
+            var result = controller.Post(request);
+
+            Assert.That(result.StatusCode == HttpStatusCode.NotFound);
+        }
+
+        private ICustomerInquiryService FakeCustomerInquityServiceWithoutDataForPost()
+        {
+            var customerInquityService = Substitute.For<ICustomerInquiryService>();
+
+            CustomerDto customerDto = null;
+
+            customerInquityService.GetCustomerTransaction(Arg.Any<int>(), Arg.Any<string>())
+                                   .Returns<CustomerDto>(customerDto);
+
+            return customerInquityService;
+        }
+
+        private ICustomerInquiryService FakeCustomerInquityServiceWithDataForPost(int transactionRow)
         {
             var customerInquityService = Substitute.For<ICustomerInquiryService>();
 
