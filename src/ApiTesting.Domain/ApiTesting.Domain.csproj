@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerInquiry\CustomerModel.cs" />
+    <Compile Include="CustomerInquiry\ICustomerInquiryRepository.cs" />
     <Compile Include="CustomerInquiry\TransactionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

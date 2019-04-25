@@ -10,5 +10,5 @@ namespace ApiTesting.Domain.CustomerInquiry
         public string Contact_Email { get; set; }
         public string Mobile_No { get; set; }
         public List<TransactionModel> Transaction { get; set; }
-}
+    }
 }
