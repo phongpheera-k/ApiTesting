@@ -49,6 +49,10 @@ namespace ApiTesting.Services.Implementation
                     }
                 }
             }
+            else
+            {
+                result = null;
+            }
             return result;
         }
     }
