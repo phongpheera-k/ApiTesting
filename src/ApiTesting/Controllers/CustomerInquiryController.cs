@@ -25,7 +25,7 @@ namespace ApiTesting.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage Get(CustomerInquiryRequest request)
+        public HttpResponseMessage Post(CustomerInquiryRequest request)
         {
             HttpResponseMessage result;
 
