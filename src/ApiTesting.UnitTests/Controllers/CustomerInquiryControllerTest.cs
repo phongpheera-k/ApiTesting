@@ -1,22 +1,28 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using ApiTesting.Models;
+using ApiTesting.Controllers;
 
 namespace ApiTesting.UnitTests.Controllers
 {
-    [TestClass]
+    [TestFixture]
     public class CustomerInquiryControllerTest
     {
-        [TestMethod]
+        [Test]
         [TestCase("1", "joegerian@gmail.com")]
         [TestCase(null, "joegerian@gmail.com")]
         [TestCase(2, "phongpheera.k@gmail.com")]
         public void Post_Success(string customerID, string email)
         {
-            CustomerInquiryControllerTest controller = new CustomerInquiryControllerTest();
+            CustomerInquiryController controller = new CustomerInquiryController();
 
-            //var result = controller.post 
+            var request = new CustomerInquiryRequest();
+            request.customerID = customerID;
+            request.email = email;
+
+            var result = controller.Post(request);
+
+            Assert.IsNotNull(result);
         }
     }
 }
