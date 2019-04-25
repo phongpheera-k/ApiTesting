@@ -43,7 +43,7 @@ namespace ApiTesting.Controllers
                     }
                     else
                     {
-                        result = Request.CreateResponse(HttpStatusCode.OK, "Not found");
+                        result = Request.CreateResponse(HttpStatusCode.NotFound, "Not found");
                     }
                 }
                 else
