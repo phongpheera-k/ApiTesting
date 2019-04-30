@@ -14,14 +14,14 @@ namespace ApiTesting.Controllers
 {
     public class CustomerInquiryController : ApiController
     {
-        private readonly ICustomerInquiryService customerInquiryService;
+        private readonly ICustomerInquiryService _customerInquiryService;
 
         public CustomerInquiryController()
             : this(new CustomerInquiryService()) { }
 
         public CustomerInquiryController(ICustomerInquiryService customerInquiryService)
         {
-            this.customerInquiryService = customerInquiryService;
+            this._customerInquiryService = customerInquiryService;
         }
 
         [HttpPost]
@@ -36,7 +36,7 @@ namespace ApiTesting.Controllers
                 {
                     var customerTrans = new CustomerInquiryResponse();
                     var customerID = string.IsNullOrWhiteSpace(request.customerID) ? 0 : int.Parse(request.customerID);
-                    customerTrans.customer = this.customerInquiryService.GetCustomerTransaction(customerID, request.email);
+                    customerTrans.customer = this._customerInquiryService.GetCustomerTransaction(customerID, request.email);
                     if (customerTrans.customer != null)
                     {
                         result = Request.CreateResponse(HttpStatusCode.OK, customerTrans.customer);
